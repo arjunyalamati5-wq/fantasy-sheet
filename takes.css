@@ -1,0 +1,57 @@
+/* Hot takes feed. Reuses the colour blocks, step tags and arrows from studio.css. */
+
+.takes-controls {
+  display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px 24px;
+  margin: 0 0 22px;
+}
+.take-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.take-chip {
+  appearance: none; cursor: pointer; font: inherit; font-size: 15px; font-weight: 600;
+  padding: 9px 16px; border-radius: 999px; min-height: 44px;
+  border: 1.5px solid var(--ink); background: transparent; color: var(--ink);
+  transition: background .2s, color .2s;
+}
+.take-chip:hover { background: var(--paper-2); }
+.take-chip[aria-pressed='true'] { background: var(--ink); color: var(--paper); }
+.take-chip:focus-visible, .take-link:focus-visible, .take-scorecard summary:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.take-count { font-variant-numeric: tabular-nums; opacity: .75; font-weight: 500; }
+.take-detector { min-width: min(260px, 100%); }
+.take-detector select { min-height: 44px; }
+
+.takes-feed .empty { margin-top: 10px; }
+.take { padding-bottom: 26px; }
+.take-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 10px; font-size: 15px; }
+.take-tone { margin: 0; border: 1.5px solid currentColor; font-size: 13px; }
+.take-who { font-weight: 600; opacity: .85; }
+.take-headline {
+  margin: 0 0 10px; font-size: clamp(24px, 3.2vw, 38px); font-weight: 550; line-height: 1.1;
+  letter-spacing: -.025em; color: inherit; max-width: 28ch;
+}
+.take p { margin: 8px 0 0; font-size: 16px; line-height: 1.5; max-width: 72ch; }
+.take-backtest { opacity: .85; }
+.take-why strong { font-weight: 650; }
+.take-foot {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; margin-top: 16px; padding-top: 12px;
+  border-top: 1px solid color-mix(in srgb, currentColor 22%, transparent); font-size: 14px;
+}
+.take-sample, .take-sources { opacity: .8; }
+.take-origin { color: inherit; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; opacity: .9; }
+.take-origin:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.take-link { display: inline-flex; align-items: center; gap: 10px; margin-left: auto; font-weight: 600; color: inherit; text-decoration: none; }
+.take-link span:first-child { text-decoration: underline; text-underline-offset: 3px; }
+
+.take-scorecard { margin-top: 28px; font-size: 15px; }
+.take-scorecard summary { cursor: pointer; font-weight: 600; padding: 8px 0; }
+.take-scorecard ul { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 8px; color: var(--ink-soft); max-width: 80ch; }
+
+.takes-preview { margin-top: 8px; }
+.takes-preview .phase-title { grid-column: 1 / -1; }
+.takes-preview .cta { margin-top: 22px; }
+[data-band='waivers'] .takes-preview .go, .takes-preview .go { background: var(--band-ink); color: var(--band); }
+.takes-preview .cta-label { background: var(--band-ink); color: var(--band); }
+
+@media (max-width: 720px) {
+  .takes-controls { flex-direction: column; align-items: stretch; }
+  .take-link { margin-left: 0; }
+  .take-headline { max-width: none; }
+}

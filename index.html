@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fantasy Sheet</title>
+<meta name="description" content="Analysis for your Sleeper fantasy football league, scored in your league's own settings.">
+<meta name="theme-color" content="#f4f1eb">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="views.css">
+<link rel="stylesheet" href="studio.css">
+<link rel="stylesheet" href="trades.css">
+<link rel="stylesheet" href="takes.css">
+<link rel="stylesheet" href="players.css">
+<link rel="stylesheet" href="season.css">
+<link rel="stylesheet" href="bracket.css">
+<link rel="stylesheet" href="draft.css">
+<link rel="stylesheet" href="frontoffice.css">
+<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="whatif.css">
+<link rel="stylesheet" href="stream.css">
+<link rel="stylesheet" href="tradefinder.css">
+<link rel="stylesheet" href="planner.css">
+<link rel="stylesheet" href="oppscout.css">
+<link rel="stylesheet" href="alerts.css">
+<link rel="stylesheet" href="editorial.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231F1D19'/><path d='M8 4v24M16 4v24M24 4v24' stroke='%23DCD5C6' stroke-opacity='.6' stroke-width='1.5'/><rect x='4' y='12' width='24' height='8' rx='2' fill='%23C4922A'/></svg>">
+<script>
+  // Apply a saved dark choice before first paint so the page never flashes
+  // the light sheet first. Light is the default; nothing to do otherwise.
+  try {
+    if (localStorage.getItem('ff.theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+</script>
+</head>
+<body>
+  <div class="ticker" id="ticker" hidden>
+    <section class="scorebug" id="scorebug" aria-label="Live score" hidden></section>
+    <div class="ticker-track" role="region" tabindex="0" aria-label="This week's NFL scores"></div>
+  </div>
+  <header class="appbar" id="appbar"></header>
+  <div class="navbar" id="navbar">
+    <nav class="tabs" id="tabs" role="navigation" hidden></nav>
+    <div class="nav-actions" id="navactions" role="region" aria-label="Shortcuts"></div>
+  </div>
+  <p class="offline-note" id="offline-note" role="status" hidden>You are offline. Showing what this device saved last; numbers may be out of date.</p>
+  <div class="wi-banner" id="whatif-banner" role="region" aria-label="What-if" hidden></div>
+  <div class="shell">
+    <main id="main" role="main"></main>
+    <footer class="sheet-foot" id="foot"></footer>
+  </div>
+  <!-- Short messages for screen readers: counts and results (polite), errors (assertive). -->
+  <div id="announce" class="visually-hidden" role="status" aria-live="polite"></div>
+  <div id="alert" class="visually-hidden" role="alert"></div>
+  <script>window.FF_STATIC = true;</script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

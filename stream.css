@@ -1,0 +1,14 @@
+/* Streaming: only what the shared table, block and tag styles do not already do. */
+.stream-steps { margin: 0 0 10px; padding-left: 1.3em; display: grid; gap: 8px; font-size: 16px; line-height: 1.4; }
+.stream-steps li strong { font-weight: 700; }
+.stream-owned { display: inline-block; margin-left: 8px; padding: 1px 8px; border: 1px solid currentColor; border-radius: 999px; font-size: 12px; white-space: nowrap; }
+.stream-compare { margin: 0; max-width: 70ch; font-size: 15px; line-height: 1.5; }
+.stream-sheet .pname { font-weight: 700; margin-right: 6px; }
+.stream-sheet .stream-own { font-size: 12px; margin-left: 0; }
+.stream-sheet .psub { display: block; margin-top: 3px; font-weight: 400; font-size: 13.5px; line-height: 1.4; overflow-wrap: anywhere; }
+.stream-sheet th.player { white-space: normal; }
+.stream-body > .stack-block { margin-top: 14px; }
+@media (max-width: 480px) {
+  .stream-steps { font-size: 15px; }
+  .stream-owned { display: table; margin: 4px 0 0; }
+}

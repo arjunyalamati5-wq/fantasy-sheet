@@ -1,0 +1,76 @@
+/* Front office: settings as colour blocks, readable at 390px, in both themes. */
+
+.fo-stack { display: grid; gap: 10px; }
+.fo-block { padding-bottom: 30px; }
+.fo-title { margin: 0 0 8px; font-size: clamp(26px, 3.6vw, 40px); font-weight: 550; letter-spacing: -.03em; line-height: 1.05; color: inherit; }
+.fo-note { margin: 0 0 18px; max-width: 70ch; font-size: 15.5px; line-height: 1.5; color: inherit; }
+.fo-sub { display: block; font-size: 13.5px; opacity: .85; margin: 4px 0 0; }
+.fo-sub-title { margin: 22px 0 6px; font-size: 17px; font-weight: 650; color: inherit; }
+.fo-status, .fo-summary { margin: 12px 0 0; font-size: 14.5px; min-height: 1.2em; }
+.fo-summary { font-weight: 650; font-size: 16px; margin: 0 0 12px; }
+
+/* Controls sit on paper-coloured wells so they keep their own contrast on any band. */
+.fo-block .field label, .fo-block fieldset legend { color: inherit; }
+.fo-block input[type='text'], .fo-block select { background: var(--paper); color: var(--ink); min-height: 44px; }
+.fo-block button.btn { min-height: 44px; }
+.fo-block button.btn.ghost { color: inherit; border-color: color-mix(in srgb, currentColor 45%, transparent); }
+.fo-block button.btn.ghost:hover { background: color-mix(in srgb, currentColor 12%, transparent); }
+.fo-block button.btn:not(.ghost):not(.danger) { background: var(--band-ink, var(--ink)); color: var(--band, var(--paper)); border-color: var(--band-ink, var(--ink)); }
+.fo-block button.btn.danger { background: var(--bad); border-color: var(--bad); color: #fff; }
+.fo-block :focus-visible { outline: 3px solid currentColor; outline-offset: 2px; }
+
+.fo-form { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: end; max-width: 560px; }
+.fo-form .field { grid-column: 1; }
+.fo-form .btn { grid-column: 2; }
+.fo-error { grid-column: 1 / -1; margin: 0; font-weight: 650; font-size: 14.5px; }
+.fo-error:empty { display: none; }
+.fo-error::before { content: 'Problem: '; }
+
+.fo-accounts { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 8px; max-width: 640px; }
+.fo-account, .fo-empty {
+  display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between;
+  padding: 12px 14px; border-radius: 12px; background: color-mix(in srgb, currentColor 10%, transparent);
+}
+.fo-account.is-active { box-shadow: inset 0 0 0 2px currentColor; }
+.fo-account-name { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+.fo-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.fo-choose { margin-top: 22px; max-width: 640px; }
+.fo-leagues { border: 0; margin: 0; padding: 0; display: grid; gap: 6px; }
+.fo-leagues legend { font-size: 20px; font-weight: 650; padding: 0; margin-bottom: 8px; }
+.fo-check { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; }
+.fo-check input[type='checkbox'] { width: 24px; height: 24px; margin: 0; flex: none; accent-color: var(--band-ink, var(--ink)); }
+.fo-check label { display: grid; gap: 2px; cursor: pointer; font-size: 16px; }
+.fo-lname { font-weight: 650; }
+.fo-viewing { margin-top: 14px; max-width: 360px; }
+.fo-signout { margin-top: 22px; display: grid; gap: 8px; justify-items: start; }
+.fo-ask { display: grid; gap: 10px; padding: 14px; border-radius: 12px; background: color-mix(in srgb, currentColor 12%, transparent); max-width: 520px; }
+.fo-ask-text { margin: 0; font-weight: 650; }
+.fo-row { display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: flex-end; }
+
+/* Tables read on paper, as the other bands do. */
+.fo-scroll { background: var(--paper); color: var(--ink); border-radius: 12px; margin-top: 8px; }
+.fo-table { width: 100%; }
+.fo-src { font-weight: 650; margin-right: 8px; }
+.fo-level { font-weight: 700; white-space: nowrap; }
+.fo-ok { color: var(--good); }
+.fo-warn { color: var(--warn); }
+.fo-fail { color: var(--bad); }
+.fo-lv-fail { background: var(--bad-wash); }
+.fo-lv-warn { background: var(--warn-wash); }
+.fo-block .tag { margin-left: 0; }
+.fo-social { margin-top: 6px; }
+
+/* On a phone each row becomes a small card, labelled cell by cell. */
+@media (max-width: 640px) {
+  .fo-form { grid-template-columns: 1fr; }
+  .fo-form .btn { grid-column: 1; }
+  .fo-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .fo-table, .fo-table tbody, .fo-table tr, .fo-table th, .fo-table td { display: block; width: 100%; box-sizing: border-box; }
+  .fo-table tr { padding: 10px 12px; border-top: 1px solid var(--rule-strong, rgba(0, 0, 0, .15)); }
+  .fo-table tr:first-child { border-top: 0; }
+  .fo-table th, .fo-table td { padding: 2px 0; text-align: left; border: 0; }
+  .fo-table td[data-label]::before { content: attr(data-label) ': '; font-weight: 650; color: var(--ink-soft); }
+  .fo-table th[data-label] { font-size: 16px; }
+  .fo-scroll { overflow-x: visible; }
+}
+@media (prefers-reduced-motion: reduce) { .fo-block * { transition: none !important; } }

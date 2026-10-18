@@ -1,0 +1,43 @@
+/* Home extras (contender, age profile, injury flags, league history) and the
+   locker room's "back in week" choice. Uses the shared tokens and bands. */
+
+.hx-block .hx-body { margin-top: 4px; }
+.hx-label {
+  margin: 0 0 6px; font-stretch: 75%; font-weight: 800; line-height: 1;
+  font-size: clamp(44px, 9vw, 84px); letter-spacing: -.02em;
+}
+.hx-lede { margin: 0 0 12px; font-size: 18px; line-height: 1.45; max-width: 62ch; }
+.hx-note { font-size: 14px; opacity: .85; }
+.hx-scores { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0 0 12px; font-size: 15px; }
+.hx-scores strong { font-stretch: 75%; font-weight: 800; font-size: 28px; margin-right: 4px; font-variant-numeric: tabular-nums; }
+.hx-quad { align-self: center; text-transform: uppercase; letter-spacing: .08em; font-size: 12px; opacity: .85; }
+.hx-list { margin: 0 0 8px; padding: 0; list-style: none; display: grid; gap: 8px; }
+.hx-list li { padding-top: 8px; border-top: 1px solid color-mix(in srgb, currentColor 22%, transparent); }
+.hx-name { font-weight: 700; }
+.hx-league { margin-top: 10px; }
+.hx-league summary { cursor: pointer; font-weight: 700; padding: 6px 0; min-height: 44px; display: flex; align-items: center; }
+.hx-league summary:focus-visible { outline: 3px solid currentColor; outline-offset: 2px; }
+.hx-table { margin-bottom: 14px; }
+.hx-table tr.is-mine th, .hx-table tr.is-mine td { font-weight: 700; }
+.hx-table .tag { margin-left: 8px; }
+.hx-sub { margin: 22px 0 8px; font-size: 20px; font-weight: 700; }
+.hx-history .hx-sub:first-of-type { margin-top: 10px; }
+
+/* Locker room: the "back in week" choice under an out player's name */
+.ir-pick { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin-top: 6px; font-size: 13px; font-weight: 600; }
+.ir-pick select {
+  font: inherit; font-size: 14px; min-height: 36px; padding: 4px 8px; border-radius: 8px;
+  border: 1.5px solid var(--rule-strong); background: var(--paper); color: var(--ink);
+}
+.ir-pick select:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.locker-wrap[aria-busy='true'], .table-scroll[aria-busy='true'] { opacity: .55; transition: opacity .2s; }
+
+@media (max-width: 720px) {
+  .hx-label { font-size: clamp(40px, 14vw, 64px); }
+  .hx-lede { font-size: 16px; }
+  .ir-pick { display: block; }
+  .ir-pick select { display: block; width: 100%; margin-top: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .table-scroll[aria-busy='true'] { transition: none; }
+}

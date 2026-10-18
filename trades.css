@@ -1,0 +1,99 @@
+/* Trades: ROS values in the pickers, handshake deals, and the trade report.
+   Uses the shared tokens (--good, --warn, --rule-strong, --paper-2). */
+
+.picker-item .pros {
+  font-stretch: 75%; font-size: 12px; font-weight: 700; color: var(--muted);
+  min-width: 44px; text-align: right; font-variant-numeric: tabular-nums;
+}
+.picker-item .pros::before { content: 'ROS '; font-weight: 600; letter-spacing: .04em; font-size: 10px; }
+
+/* Handshake deals */
+.tr-deals .section-title { margin-top: 0; }
+.tr-deal-table td, .tr-deal-table th { vertical-align: top; }
+.tr-deal-table .tr-load { white-space: nowrap; padding: 6px 12px; font-size: 13px; }
+.tr-deal-table .tr-load .go { display: inline-block; width: 14px; height: 14px; vertical-align: -2px; margin-left: 4px; }
+.tr-deal-table tbody tr:hover { background: var(--paper-2); }
+
+/* Report */
+.tr-report { margin-top: 0; }
+.tr-head { display: flex; align-items: center; gap: 22px; margin-bottom: 18px; }
+.tr-grade {
+  flex: none; width: 92px; height: 92px; border-radius: 20px; display: grid; place-items: center;
+  font-stretch: 75%; font-weight: 800; font-size: 54px; line-height: 1;
+  border: 2px solid currentColor;
+}
+.tr-grade.good { color: var(--good); background: var(--good-wash); }
+.tr-grade.warn { color: var(--warn); background: var(--warn-wash); }
+.tr-verdict { margin: 0; font-size: clamp(24px, 4vw, 34px); line-height: 1.1; }
+.tr-sub { margin: 6px 0 0; color: var(--muted); }
+.tr-deltas { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+.tr-delta { display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; border-radius: 12px; border: 1.5px solid var(--rule-strong); }
+.tr-delta.good { border-left: 6px solid var(--good); }
+.tr-delta.warn { border-left: 6px solid var(--warn); }
+.tr-delta-label { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.tr-delta-num { font-stretch: 75%; font-weight: 800; font-size: 28px; font-variant-numeric: tabular-nums; }
+.tr-delta.good .tr-delta-num { color: var(--good); }
+.tr-delta.warn .tr-delta-num { color: var(--warn); }
+.tr-delta-range { font-size: 13px; color: var(--muted); }
+
+@media (max-width: 720px) {
+  .tr-head { gap: 14px; }
+  .tr-grade { width: 68px; height: 68px; font-size: 40px; border-radius: 14px; }
+  .tr-deltas { grid-template-columns: 1fr; }
+}
+
+/* Market values (FantasyCalc) */
+.picker-item .pmkt {
+  font-stretch: 75%; font-size: 12px; font-weight: 700; color: var(--muted);
+  min-width: 52px; text-align: right; font-variant-numeric: tabular-nums;
+}
+.picker-item .pmkt::before { content: 'MKT '; font-weight: 600; letter-spacing: .04em; font-size: 10px; }
+.tr-market { margin: 14px 0; padding: 12px 16px; border-radius: 12px; border: 1.5px solid var(--rule-strong); }
+.tr-market.good { border-color: var(--good); }
+.tr-market.warn { border-color: var(--warn); }
+.tr-market p { margin: 0; }
+.tr-market-compare { font-weight: 700; }
+.tr-market-credit { margin-top: 4px; font-size: 12px; }
+.tr-gap { font-variant-numeric: tabular-nums; }
+
+/* Handshake verdict line, playoff odds and the dynasty read */
+.tr-line { margin: 14px 0 0; font-size: 18px; font-weight: 700; line-height: 1.3; padding-left: 14px; border-left: 6px solid var(--rule-strong); }
+.tr-line.is-both, .tr-line.is-you { border-left-color: var(--good); }
+.tr-line.is-counter { border-left-color: var(--warn); }
+.tr-line.is-them, .tr-line.is-lose { border-left-color: var(--bad, var(--warn)); }
+.tr-line-sub { font-weight: 700; margin-top: 2px; }
+
+.tr-odds { margin: 14px 0; }
+.tr-odds-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.tr-odds-card { display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; border-radius: 12px; border: 1.5px solid var(--rule-strong); }
+.tr-odds-card.is-up { border-left: 6px solid var(--good); }
+.tr-odds-card.is-down { border-left: 6px solid var(--warn); }
+.tr-odds-num { font-stretch: 75%; font-weight: 800; font-size: 30px; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.tr-odds-num .was { color: var(--muted); font-size: 22px; }
+.tr-odds-card.is-up .now { color: var(--good); }
+.tr-odds-card.is-down .now { color: var(--warn); }
+.tr-odds-note { margin: 8px 0 0; font-size: 13px; }
+
+.tr-dyn { margin: 14px 0; padding: 12px 16px; border-radius: 12px; border: 1.5px solid var(--rule-strong); }
+.tr-dyn.good { border-color: var(--good); }
+.tr-dyn.warn { border-color: var(--warn); }
+.tr-dyn p { margin: 0 0 6px; }
+.tr-dyn p:last-child { margin-bottom: 0; }
+
+.picker-group { margin: 10px 0 4px; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.picker-item.is-pick .pos { letter-spacing: .04em; }
+
+.tr-dynasty .section-title { margin-top: 0; }
+.tr-dynasty .sp-title { margin: 26px 0 8px; font-size: 24px; }
+.tr-dynasty .sp-title:first-child { margin-top: 0; }
+.dyn-table tr.is-mine th, .dyn-table tr.is-mine td { font-weight: 700; }
+.dyn-table .tag { margin-left: 8px; }
+.dyn-holds { min-width: 14rem; font-size: 14px; }
+.dyn-moved { margin: 0 0 8px; padding-left: 20px; }
+.dyn-explain { margin: 0; font-size: 18px; line-height: 1.5; max-width: 62ch; }
+
+@media (max-width: 720px) {
+  .tr-odds-cards { grid-template-columns: 1fr; }
+  .tr-line { font-size: 16px; }
+  .tr-odds-num { font-size: 26px; }
+}

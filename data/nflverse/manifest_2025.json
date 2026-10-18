@@ -1,0 +1,109 @@
+{
+ "schema": 1,
+ "generatedAt": "2026-10-18T03:37:57.026Z",
+ "season": 2025,
+ "throughWeek": 18,
+ "participationSeason": 2025,
+ "participationIsCurrent": true,
+ "sources": [
+  {
+   "id": "pbp",
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2025.csv.gz",
+   "name": "play_by_play_2025.csv.gz"
+  },
+  {
+   "id": "pbp_prev",
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2024.csv.gz",
+   "name": "play_by_play_2024.csv.gz"
+  },
+  {
+   "id": "snap_counts",
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2025.csv",
+   "name": "snap_counts_2025.csv"
+  },
+  {
+   "id": "ftn_charting",
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/ftn_charting/ftn_charting_2025.csv",
+   "name": "ftn_charting_2025.csv"
+  },
+  {
+   "id": "pbp_participation",
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp_participation/pbp_participation_2025.csv",
+   "name": "pbp_participation_2025.csv"
+  },
+  {
+   "id": "players",
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+   "name": "players.csv"
+  }
+ ],
+ "files": {
+  "weekly_2025.json": 1034971,
+  "season_2025.json": 159421,
+  "teams_2025.json": 48677,
+  "coverage_2025.json": 49833
+ },
+ "xtd": {
+  "fitSeason": 2024,
+  "targets": 17013,
+  "carries": 14282,
+  "bins": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   7,
+   10,
+   15,
+   20,
+   30,
+   40,
+   60,
+   100
+  ],
+  "tgt": [
+   0.5395,
+   0.5556,
+   0.4018,
+   0.4842,
+   0.4623,
+   0.4112,
+   0.2646,
+   0.1741,
+   0.106,
+   0.0563,
+   0.0301,
+   0.0118,
+   0.0054
+  ],
+  "car": [
+   0.5714,
+   0.4127,
+   0.3782,
+   0.2727,
+   0.2308,
+   0.1957,
+   0.0878,
+   0.0459,
+   0.0305,
+   0.0172,
+   0.009,
+   0.0054,
+   0.0025
+  ]
+ },
+ "matched": 2043,
+ "matchMethods": {
+  "gsis": 754,
+  "crosswalk": 1006,
+  "espn": 69,
+  "name_team_pos": 55,
+  "name_pos": 159
+ },
+ "idConflicts": 56,
+ "unmatchedCount": 9,
+ "ftnJoinRate": 1,
+ "buildMs": 35238,
+ "attribution": "Play-by-play and snap data: nflverse. Charting data: FTN Data via nflverse. Participation: NFL Next Gen Stats via nflverse."
+}

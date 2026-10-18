@@ -1,0 +1,210 @@
+/* Editorial: warm paper, a serif for display and a mono for everything else.
+   Loaded last, so it restyles the whole app through its tokens and a few
+   type rules; every transition and animation from studio.css is kept.
+   Muted text is darker than a typical "warm grey" so it still reads at
+   4.5:1 on paper and on every tinted block. */
+
+:root {
+  --serif: 'Instrument Serif', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --mono: 'DM Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --sans: var(--mono);
+  --display: var(--serif);
+  --body: var(--mono);
+  --mono-num: var(--mono);
+
+  --ground: #f4f1eb;
+  --paper: #faf8f3;
+  --paper-2: #efeadf;
+  --ink: #1f1d19;
+  --ink-soft: #3d3a33;
+  --muted: #5d5850;
+  --faint: #625d54;
+  --rule: #dcd5c6;
+  --rule-strong: #8f887a;
+
+  --line: #c4922a;
+  --line-ink: #1f1d19;
+  --good: #2d5a27;
+  --good-wash: #dfe7d9;
+  --bad: #8b3a1a;
+  --bad-wash: #f1e0d6;
+  --warn: #7a5714;
+  --warn-wash: #f3e8cf;
+  --live: #a8321c;
+  --turf: #2d5a27;
+  --turf-dark: #244a20;
+  --endzone-me: #1f1d19;
+  --endzone-them: #8b3a1a;
+
+  --band-team: #f1e4c4;
+  --band-week: #f0ddd2;
+  --band-trades: #dbe2ea;
+  --band-waivers: #dce6d4;
+  --band-research: #e5def0;
+  --band-league: #d9e6e3;
+  --band-draft: #f3dcc6;
+  --band-dfs: #eed8d1;
+  --band-feeds: #e9e4d8;
+  --band-advisor: #e3e7cf;
+  --band-takes: #f2d4c2;
+  --band-plan: #1f1d19;
+  --band-ink: #1f1d19;
+
+  --r-sheet: 4px;
+  --r-sm: 3px;
+  --r: 4px;
+  --r-lg: 6px;
+}
+
+:root[data-theme='dark'] {
+  --ground: #171512;
+  --paper: #211e1a;
+  --paper-2: #2b2722;
+  --ink: #f2ece0;
+  --ink-soft: #ddd6c7;
+  --muted: #bdb5a4;
+  --faint: #b0a896;
+  --rule: #3b362e;
+  --rule-strong: #7d7564;
+
+  --line: #d9a945;
+  --line-ink: #171512;
+  --good: #9cc892;
+  --good-wash: #1f2c1c;
+  --bad: #e8a387;
+  --bad-wash: #3a2219;
+  --warn: #e2bd6a;
+  --warn-wash: #352a14;
+  --live: #f08a6a;
+  --endzone-me: #f2ece0;
+  --endzone-them: #e8a387;
+
+  --band-team: #3b3221;
+  --band-week: #3c2a24;
+  --band-trades: #253040;
+  --band-waivers: #24331f;
+  --band-research: #2f2940;
+  --band-league: #1f3532;
+  --band-draft: #3d2d20;
+  --band-dfs: #3b2628;
+  --band-feeds: #2b2823;
+  --band-advisor: #2e3322;
+  --band-takes: #402a20;
+  --band-plan: #f2ece0;
+  --band-ink: #f2ece0;
+}
+[data-band='plan'] { --band-ink: #faf8f3; }
+:root[data-theme='dark'] [data-band='plan'] { --band-ink: #171512; }
+
+/* ---------------------------------------------------------------- type */
+
+body { font-family: var(--mono); font-size: 14px; line-height: 1.6; letter-spacing: -.005em; }
+button, input, select, textarea { font-family: inherit; }
+
+/* Display lines in the serif. Section titles lean italic, as in a magazine. */
+.wordmark, .hero-title, .block-title, .phase-title, h2.section-title, h3.sub-title,
+.onfield > h2, .empty h3, .tr-verdict, .wi-trade-title, .hx-label, .pv-name, .wi-sub {
+  font-family: var(--serif); font-weight: 400; font-stretch: normal; letter-spacing: -.01em;
+}
+.wordmark { text-transform: none; font-style: italic; line-height: .95; letter-spacing: -.02em; }
+.hero-title { font-size: clamp(44px, 7vw, 104px); line-height: 1; letter-spacing: -.02em; }
+.block-title, .phase-title, h2.section-title { font-style: italic; letter-spacing: -.005em; }
+.block-title { font-size: clamp(36px, 4.6vw, 62px); }
+.phase-title { font-size: clamp(30px, 3.8vw, 50px); }
+h2.section-title { font-size: clamp(30px, 3.6vw, 44px); }
+h3.sub-title, .wi-sub { font-size: 24px; font-style: italic; }
+.empty h3 { font-size: 22px; }
+#main h2, #main h3 { font-family: var(--serif); font-weight: 400; font-stretch: normal; }
+#main .stack-block > h2, #main .stack-block > h3, #main .stack-block > header h2, #main .stack-block > header h3 { font-style: italic; }
+#main h4, #main h5 { font-family: var(--mono); font-weight: 500; }
+.wordmark { --wm-cap: .095; }
+
+/* Big numbers in the serif: they read as figures, not as data dumps. */
+.figure .value, .play .ans, .phase-num, .tr-grade, .bc-pts, .pv-big, .tr-delta-num,
+.tr-odds-num, .move .gain, .wi-effect-row dd, .hx-scores strong, .sb-pts {
+  font-family: var(--serif); font-weight: 400; font-stretch: normal; letter-spacing: -.01em;
+}
+.play .ans { font-size: 38px; }
+.phase-num { font-style: italic; }
+.wi-effect-row dd { font-size: 26px; }
+
+/* Mono labels: medium weight, never a faux-bold slab. */
+table.roster th, table.sheet th, table.sheet thead td, table.roster td.slot, table.roster tr.group th,
+table.roster td.big, table.sheet td.num, table.roster tfoot th, table.roster tfoot td, table.sheet tbody th,
+.tag, button.btn, .pill-btn, .picker-item .pos, .picker-item .pval, .move .say .slotname, .checks h3,
+.of-pts b, .bc-proj b, .gridiron .endzone, .gridiron .ball b, .tab-row a, .seg-btn, button.mini,
+.play .what, .step-tag, .tk-team b, .wi-banner-tag, .wi-team-name {
+  font-family: var(--mono); font-stretch: normal; font-weight: 500;
+}
+table.sheet th, table.roster th, table.sheet thead td { letter-spacing: .01em; }
+table.roster td.big, table.sheet td.num { font-size: 14px; }
+.play .what { font-size: 16px; }
+.tab-row a { font-size: 13.5px; letter-spacing: -.01em; }
+.tab-row.secondary a { font-size: 13px; }
+.tag { border-radius: 2px; letter-spacing: .02em; }
+
+/* ---------------------------------------------------------------- surfaces */
+
+.stack-block {
+  border-radius: 6px;
+  border: 1px solid color-mix(in srgb, var(--band-ink, var(--ink)) 12%, transparent);
+}
+nav.tabs, .icon-btn, .pill-btn, .league-pick {
+  box-shadow: none; border: 1px solid var(--rule);
+}
+nav.tabs { border-radius: 6px; background: var(--paper); }
+.pill-btn { border-radius: 3px; }
+.league-pick { border-radius: 3px; font-family: var(--mono); }
+.cta-label { border-radius: 3px; }
+.tab-row a { border-radius: 3px; }
+.home-block:not(:first-child) { box-shadow: 0 -14px 30px -24px rgba(31, 29, 25, .35); }
+.table-scroll { border-radius: 4px; }
+.wi-banner-inner, .wi-effect-row, .wi-trade-card, .wi-cols-col, .wi-week, .wi-list li, .wi-results li { border-radius: 4px; }
+.wi-banner-inner { box-shadow: none; border: 1px solid var(--rule); }
+.wi-side { border-radius: 3px; border-color: var(--rule); }
+.wi-team { border-radius: 3px; }
+.masthead-meta, .hero-sub, .phase-when { font-size: 14px; }
+.hero-sub { font-size: 15px; }
+
+/* Thin rules instead of heavy dividers: his quiet ledger feel. */
+a.play, a.step { border-top-color: color-mix(in srgb, currentColor 16%, transparent); }
+
+#main h4.wi-trade-title { font-family: var(--serif); font-weight: 400; font-size: 26px; line-height: 1.15; }
+
+.offline-note { margin: 6px 24px 0; padding: 8px 14px; border: 1px solid var(--rule); border-radius: 4px; background: var(--warn-wash); color: var(--ink); font-size: 13.5px; }
+@media (max-width: 720px) { .offline-note { margin: 6px 12px 0; } }
+
+/* ---------------------------------------------------------------- calmer sheets
+   Sections are quiet sheets on the paper, like a ledger: the section's colour
+   is a thin rule along the top, not a flood. The stacking and reveal motion is
+   unchanged; only the surface is calmer. */
+.stack-block {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-top: 3px solid color-mix(in srgb, var(--band, var(--rule)) 100%, var(--ink) 18%);
+  border-radius: 4px;
+  padding: 26px 30px 30px;
+}
+/* The plan keeps its dark sheet: it is the one call to action. */
+.stack-block[data-band='plan'] { background: var(--band-plan); color: var(--band-ink); border-color: var(--band-plan); }
+/* Text that used the block's ink now uses the page's. */
+.stack-block:not([data-band='plan']) { --band-ink: var(--ink); }
+.home-block:not(:first-child) { box-shadow: 0 -10px 24px -22px rgba(31, 29, 25, .4); }
+.stack-block + .stack-block { margin-top: 14px; }
+a.play::before, a.step::before { background: color-mix(in srgb, var(--band, var(--ink)) 35%, transparent); }
+
+/* Page titles sit left, like a magazine section front. */
+section.panel > .hero-title { text-align: left; padding: 34px 0 6px; font-size: clamp(40px, 5.6vw, 84px); }
+section.panel > .hero-sub, section.panel > div > .hero-sub { text-align: left; margin: 6px 0 28px; }
+.hero-sub { color: var(--muted); }
+
+/* Quiet table heads: small mono, muted, like column labels in print. */
+table.sheet thead th, table.roster thead th, table.sheet th[scope='col'] {
+  font-size: 12px; font-weight: 400; color: var(--muted); letter-spacing: .02em;
+}
+.tag { background: var(--paper-2); }
+/* Every page subtitle lines up under its left-aligned title; the home hero
+   sentence (.hero) stays centred as the one statement on the page. */
+section.panel .hero-sub { text-align: left; margin-left: 0; }
+section.panel .hero .hero-sub { text-align: center; margin-left: auto; }

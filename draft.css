@@ -1,0 +1,67 @@
+/* The draft room. Builds on styles.css, studio.css and season.css; loaded after season.css.
+   Every state is said in words (tags, "you", "on the clock"); tint only backs the words up. */
+
+.dr-panel { margin-top: 4px; }
+.dr-tabs { margin-top: 8px; }
+.dr-filters { margin-top: 18px; }
+
+/* ---------------------------------------------------------------- countdown */
+
+.dr-clock {
+  margin: 0 0 6px; font-size: clamp(30px, 6.4vw, 64px); font-weight: 550; line-height: 1.02;
+  letter-spacing: -.03em; font-variant-numeric: tabular-nums;
+}
+.dr-slot { margin: 10px 0 0; font-size: 17px; font-weight: 550; }
+.dr-slot .tag { margin-left: 0; }
+
+/* ---------------------------------------------------------------- tables */
+
+.dr-table td.num, .dr-table th.num { white-space: nowrap; }
+.dr-table td.num .sub { display: inline; margin-left: 6px; font-size: 11.5px; }
+.dr-table th .pname { font-weight: 650; }
+.dr-table .btn { padding: 7px 14px; min-height: 40px; }
+.dr-inner { margin-top: 18px; }
+.dr-inner .sp-title { font-size: 22px; }
+.dr-first { margin: 0 0 14px; font-size: 17px; line-height: 1.45; }
+.dr-grade-line { margin: 0 0 14px; font-size: 17px; }
+
+/* ---------------------------------------------------------------- lists */
+
+.dr-runs { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 17px; font-weight: 550; }
+.dr-runs .tag { margin-left: 8px; }
+.dr-poll { margin: 6px 0 12px; font-size: 14px; }
+
+/* ---------------------------------------------------------------- the board */
+
+.board-scroll { margin-bottom: 0; }
+.board-scroll:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+table.dr-board { min-width: 760px; table-layout: fixed; font-size: 12.5px; }
+table.dr-board th, table.dr-board td {
+  padding: 6px 7px; vertical-align: top; text-align: left; border-left: 1px solid var(--rule);
+  overflow-wrap: anywhere; line-height: 1.25;
+}
+table.dr-board thead th { font-size: 12px; font-weight: 650; position: sticky; top: 0; background: var(--paper); }
+table.dr-board th:first-child { width: 52px; position: sticky; left: 0; z-index: 1; background: var(--paper); border-left: 0; }
+table.dr-board .pn { display: block; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+table.dr-board .bp { display: block; font-weight: 600; color: var(--ink); }
+table.dr-board .bp .sub { display: block; font-weight: 400; font-size: 11px; color: var(--muted); }
+table.dr-board td .tag { margin-left: 0; }
+table.dr-board .mine-col { background: var(--paper-2); box-shadow: inset 0 3px 0 var(--ink); }
+table.dr-board thead th.mine-col { box-shadow: inset 0 3px 0 var(--ink); }
+table.dr-board td.mine-cell .bp { text-decoration: underline; text-underline-offset: 2px; }
+table.dr-board td.clock-cell { outline: 2px dashed var(--ink); outline-offset: -3px; }
+
+/* ---------------------------------------------------------------- phones */
+
+@media (max-width: 720px) {
+  .dr-clock { font-size: clamp(26px, 9vw, 40px); }
+  .dr-tabs .seg-btn { flex: 1 1 calc(50% - 6px); }
+  .dr-filters .seg-btn { padding: 0 12px; min-height: 40px; }
+  .dr-runs { font-size: 16px; gap: 6px 16px; }
+  table.dr-board { min-width: 680px; }
+  .dr-table .btn { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .board-scroll { scroll-behavior: auto; }
+}

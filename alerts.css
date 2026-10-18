@@ -1,0 +1,20 @@
+/* Game-day alerts: quiet ledger sheet and a plain toast, on the editorial tokens. */
+.alerts-sheet, .alerts-panel { background: var(--paper); border: 1px solid var(--rule); border-radius: var(--r-sheet, 4px); padding: 14px 16px; margin: 12px 0; }
+.alerts-sheet h3 { margin: 0 0 6px; font-family: var(--serif); font-weight: 400; font-size: 20px; color: var(--ink); }
+.alerts-lede, .alerts-state, .alerts-none { margin: 4px 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.alerts-state { color: var(--ink-soft); }
+.alert-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 10px; }
+.alerts-btn, .alert-actions button { font: inherit; font-size: 13px; color: var(--ink); background: var(--paper-2); border: 1px solid var(--rule-strong); border-radius: var(--r-sheet, 4px); padding: 8px 12px; min-height: 40px; cursor: pointer; }
+.alerts-btn:disabled { opacity: .55; cursor: default; }
+.alerts-btn:focus-visible, .alert-actions button:focus-visible, .alert-actions a:focus-visible, .alert-row a:focus-visible { outline: 2px solid var(--line-ink); outline-offset: 2px; }
+.alerts-list { list-style: none; margin: 0; padding: 0; }
+.alert-row { display: grid; gap: 4px; padding: 10px 0 10px 12px; border-top: 1px solid var(--rule); border-left: 3px solid var(--rule-strong); font-size: 13px; }
+.alert-row:first-child { border-top: 0; }
+.alert-row.is-urgent { border-left-color: var(--bad); }
+.alert-row.is-warn { border-left-color: var(--warn); }
+.alert-swap { color: var(--muted); }
+.alert-row a, .alert-actions a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.alert-toasts { position: fixed; z-index: 60; right: 16px; bottom: 16px; left: 16px; display: grid; gap: 8px; max-width: 420px; margin-left: auto; }
+.alert-toast { background: var(--paper); color: var(--ink); border: 1px solid var(--rule-strong); border-left: 4px solid var(--warn); border-radius: var(--r-sheet, 4px); padding: 12px 14px; box-shadow: 0 6px 24px rgba(31, 29, 25, .18); font-size: 13px; }
+.alert-toast.is-urgent { border-left-color: var(--bad); }
+.alert-toast p { margin: 0; line-height: 1.5; }

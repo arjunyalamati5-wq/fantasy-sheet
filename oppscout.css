@@ -1,0 +1,25 @@
+/* Opponent scouting. Shared tokens only; works in both themes. */
+
+.os-sections { display: grid; gap: 14px; }
+.os-sections .stack-block + .stack-block { margin-top: 0; }
+.os-picker { display: flex; flex-wrap: wrap; align-items: end; gap: 8px 18px; margin: 4px 0 16px; }
+.os-picker .field { min-width: min(100%, 260px); }
+.os-pick { min-height: 44px; font: inherit; font-family: var(--mono); max-width: 100%; }
+.os-note { margin: 10px 0; max-width: 62ch; }
+.os-block h4.os-sub { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 22px; margin: 22px 0 6px; }
+.os-list { margin: 6px 0 0; padding-left: 1.1em; display: grid; gap: 4px; max-width: 70ch; }
+.os-table th.l, .os-table td.l { text-align: left; }
+.os-table td.num, .os-table th:not(.l) { text-align: right; white-space: nowrap; }
+.os-who { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 2px 6px; }
+.os-empty { color: var(--muted); font-style: italic; }
+.os-edge { font-weight: 600; white-space: nowrap; }
+.os-bidtext { display: block; margin-bottom: 6px; max-width: 46ch; }
+.os-table .pill-btn { min-height: 36px; font-size: 13px; }
+
+@media (max-width: 720px) {
+  .os-block.stack-block { padding: 20px 14px 22px; }
+  .os-table { font-size: 13px; }
+  .os-table .pclub { display: block; margin-left: 0; }
+  .os-bidtext { max-width: none; }
+  .os-picker .field, .os-pick { width: 100%; }
+}

@@ -1,0 +1,133 @@
+/* The locker room, the waiver wire and the playoff picture.
+   Builds on the tokens and components in styles.css, views.css and studio.css;
+   loaded after studio.css. Every state is also said in words, never by colour alone. */
+
+/* ---------------------------------------------------------------- colour blocks */
+
+.sp-block { margin-top: 14px; }
+.sp-title {
+  margin: 0 0 14px; font-size: clamp(26px, 3.2vw, 40px); font-weight: 550; line-height: 1.05;
+  letter-spacing: -.03em; color: inherit; font-stretch: 100%;
+}
+.sp-note, .sp-lede { margin: -6px 0 16px; max-width: 76ch; font-size: 15.5px; line-height: 1.5; opacity: .88; }
+.sp-lede { margin-top: 0; font-size: 17px; opacity: 1; }
+.sp-warn { margin: 0 0 12px; padding: 8px 12px; border-radius: 8px; background: var(--warn-wash); color: var(--warn); font-size: 14.5px; font-weight: 550; }
+.sp-legend { margin: 14px 0 0; max-width: 88ch; font-size: 14px; line-height: 1.55; opacity: .9; }
+.dim { color: var(--muted); }
+.dim-num { color: var(--ink-soft); font-size: 15px !important; }
+
+/* ---------------------------------------------------------------- toggles */
+
+.seg { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
+.seg-btn {
+  font: inherit; font-size: 14.5px; font-weight: 600; cursor: pointer;
+  min-height: 40px; padding: 0 16px; border-radius: 999px;
+  background: var(--paper); color: var(--ink); border: 1.5px solid var(--ink);
+  transition: background .2s, color .2s, transform .15s;
+}
+.seg-btn:hover { background: var(--paper-2); }
+.seg-btn[aria-pressed='true'] { background: var(--ink); color: var(--paper); }
+.seg-btn:active { transform: scale(.97); }
+.seg-btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.weektabs { flex-wrap: nowrap; overflow-x: auto; padding: 3px 3px 8px; margin-left: -3px; scrollbar-width: thin; }
+.weektabs .seg-btn { flex: none; white-space: nowrap; }
+
+button.mini {
+  font: inherit; font-size: 13px; font-weight: 650; cursor: pointer;
+  min-height: 32px; min-width: 44px; padding: 0 10px; border-radius: 6px;
+  background: var(--paper); color: var(--ink); border: 1.5px solid var(--rule-strong);
+}
+button.mini:hover { background: var(--paper-2); }
+button.mini[aria-pressed='true'] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+button.mini:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.mini-clear { margin-top: 4px; }
+td.ctl { white-space: nowrap; text-align: right; }
+td.ctl button.mini + button.mini { margin-left: 6px; }
+
+/* ---------------------------------------------------------------- tags */
+
+.tag.grade { font-weight: 700; }
+.matchup { white-space: nowrap; }
+.mark {
+  display: inline-block; min-width: 1.45em; margin-left: 7px; padding: 0 3px; text-align: center;
+  border: 1.5px solid currentColor; border-radius: 4px;
+  font-weight: 800; font-size: 11.5px; line-height: 1.35; text-transform: lowercase; vertical-align: 1px;
+}
+
+/* ---------------------------------------------------------------- player cells in sheet tables */
+
+/* table.roster styles name, club and the note under them; the sheet tables here
+   (roster, claims, risers) carry the same cell, so they get the same treatment. */
+table.sheet th.player { text-align: left; min-width: 170px; }
+table.sheet .pname { font-weight: 650; font-size: 15px; line-height: 1.25; }
+table.sheet .psub { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.3; margin-top: 2px; max-width: 52ch; white-space: normal; }
+table.sheet tr.is-move .psub { color: var(--good); font-weight: 600; }
+table.sheet tbody tr.is-move th.player { box-shadow: inset 3px 0 0 var(--good); }
+table.sheet .psub.narrow-only { color: var(--ink-soft); }
+@media (max-width: 720px) { table.sheet th.player { min-width: 0; } }
+
+/* ---------------------------------------------------------------- locker room */
+
+.bbn-total { margin: 0 0 12px; font-size: 16px; }
+.bbn-total strong { font-stretch: 75%; font-weight: 800; font-size: 28px; margin-right: 4px; }
+.bbn-body[aria-busy='true'] { opacity: .55; transition: opacity .2s; }
+table.bbn-table tr.is-pinned td, table.bbn-table tr.is-pinned th { background: var(--good-wash); }
+table.bbn-table tr.is-benched td, table.bbn-table tr.is-benched th { background: var(--paper-2); }
+table.bbn-table td.stat { text-align: right; }
+table.locker td.num { font-size: 16px; }
+
+/* ---------------------------------------------------------------- standings */
+
+.row-toggle {
+  display: inline-flex; align-items: center; flex-wrap: wrap; gap: 0; max-width: 100%;
+  background: none; border: 0; padding: 4px 0; margin: 0; font: inherit; color: inherit; text-align: left; cursor: pointer;
+}
+.row-toggle .tname { font-weight: 600; }
+.row-toggle:hover .tname { text-decoration: underline; text-underline-offset: 3px; }
+.row-toggle:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
+.row-toggle .chev {
+  margin-left: 8px; width: 20px; height: 20px; display: inline-grid; place-items: center;
+  border: 1.5px solid var(--rule-strong); border-radius: 50%; font-size: 14px; line-height: 1; color: var(--muted);
+}
+tr.detail-row td { background: var(--paper-2); text-align: left; padding: 10px 16px 12px; white-space: normal; }
+tr.detail-row[hidden] { display: none; }
+.sched-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 4px 18px; font-size: 14px; }
+.sched-list .wk { font-weight: 700; font-stretch: 87.5%; }
+
+.magic { display: grid; grid-template-columns: minmax(180px, 280px) 1fr; gap: 0 22px; align-items: center; margin-bottom: 18px; }
+.magic .figures { margin: 0; }
+.magic-detail { margin: 0; font-size: 17px; line-height: 1.45; max-width: 60ch; }
+
+.seed-grid td.cell-p {
+  font-size: 14px; text-align: center; padding-left: 4px; padding-right: 4px; min-width: 38px;
+  background: color-mix(in srgb, var(--ink) calc(var(--p, 0) * 30%), transparent);
+}
+.seed-grid td.cell-p.zero { color: var(--muted); }
+.seed-grid thead th:not(:first-child) { text-align: center; }
+
+/* ---------------------------------------------------------------- phones */
+
+@media (max-width: 720px) {
+  .sp-block { padding: 20px 14px 22px; }
+  .sp-title { font-size: 26px; }
+  .sp-lede { font-size: 16px; }
+  .magic { grid-template-columns: 1fr; gap: 10px 0; }
+  .seg-btn { min-height: 44px; padding: 0 14px; font-size: 14px; }
+  td.ctl { white-space: normal; }
+  td.ctl button.mini { display: block; width: 100%; min-height: 36px; }
+  td.ctl button.mini + button.mini { margin: 4px 0 0; }
+  .row-toggle .chev { margin-left: 6px; }
+  .seed-grid td.cell-p { min-width: 32px; font-size: 13px; padding-left: 2px; padding-right: 2px; }
+  .bbn-total strong { font-size: 24px; }
+  .detail-row .sched-list { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seg-btn, .bbn-body { transition: none; }
+}
+
+/* A group heading row inside a sheet table (claims that would not start). */
+table.sheet tr.group th {
+  text-align: left; background: var(--paper-2); color: var(--ink-soft);
+  font-stretch: 87.5%; font-weight: 700; font-size: 13.5px; padding: 8px 16px;
+}

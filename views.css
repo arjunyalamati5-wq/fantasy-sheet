@@ -1,0 +1,114 @@
+/* View-specific rules that build on styles.css tokens and components.
+   Nothing here invents a new visual language — these are small additions the
+   finished screens (home/lineup/matchup) did not happen to need. */
+
+/* A roster table's version of table.sheet's "mine" row: the manager's own
+   line in a league-wide table, tinted so it is found at a glance. */
+table.roster tr.mine td, table.roster tr.mine th { background: var(--paper-2); }
+table.roster tr.mine .player .pname { font-weight: 800; }
+
+/* A row header whose sub-line is a sentence, not a name, needs a cap on its
+   width — otherwise table auto-layout gives the whole column room to avoid
+   wrapping it at all, which pushes every other column off screen. table.sheet
+   th is nowrap by default (right for a short row label); override that here,
+   or the cap above does nothing and the sentence just overflows unwrapped. */
+.wrap-cell { max-width: 280px; }
+/* table.sheet th's own nowrap rule is just as specific and comes later, so
+   the override needs the table.sheet th prefix repeated to win the tie. */
+table.sheet th.wrap-cell, table.roster th.wrap-cell { white-space: normal; }
+@media (max-width: 720px) { .wrap-cell { max-width: 220px; } }
+/* A second, tighter cap for when two prose cells share one row (the betting
+   board's game and its line) and both must fit next to a headline number. */
+@media (max-width: 720px) { .wrap-cell.compact { max-width: 125px; } }
+
+/* An odds bar is reinforcement, not the fact — the percentage beside it says
+   the same thing in words. On a phone, keep the number and drop the bar so
+   two odds columns can sit next to a team name without an inner scroll. */
+@media (max-width: 720px) { table.sheet .bar-track { display: none; } }
+
+/* A row header can carry a sub-line too (kickoff time, a trade's summary) —
+   the same quiet treatment table.sheet already gives a data cell's .sub. */
+table.sheet th .sub { display: block; font-weight: 500; font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+/* The phone-only half of a "drop these columns, fold them into one sentence
+   instead" pair: paired with marking the same facts `wide` on their real
+   columns, so nothing is said twice at either width. A plain utility, so
+   !important is the point, not a smell — it must win over every other
+   display rule regardless of what carries it. */
+.narrow-only { display: none !important; }
+@media (max-width: 720px) { .narrow-only { display: block !important; } }
+
+/* A small stamped number, for a row header that leads with a rank or seed
+   (power rankings, draft grades, standings) — a corner mark, not a pill. */
+.rank-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 24px; height: 24px; padding: 0 5px;
+  border-radius: var(--r-sm); border: 1.5px solid var(--rule-strong);
+  background: var(--paper-2); color: var(--ink);
+  font-stretch: 75%; font-weight: 800; font-size: 12.5px;
+  margin-right: 8px; vertical-align: -1px;
+}
+
+/* Trade ledger: two lists of names, one per side, read as what leaves your
+   roster against what arrives on it. */
+.ledger-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.ledger-cols .side + .side { border-left: 1.5px solid var(--rule-strong); }
+.ledger-cols .side { padding: 0 18px; }
+.ledger-cols .side:first-child { padding-left: 0; }
+.ledger-cols .side:last-child { padding-right: 0; }
+
+@media (max-width: 720px) {
+  .ledger-cols { grid-template-columns: 1fr; }
+  .ledger-cols .side + .side { border-left: 0; border-top: 1.5px solid var(--rule-strong); padding-top: 14px; margin-top: 8px; }
+  .ledger-cols .side { padding-left: 0; padding-right: 0; }
+}
+
+/* Reserve the space the app fills in, so the page does not jump as it loads:
+   the main area starts a screen tall (the footer begins below the fold), and
+   the matchup placeholder is as tall as the header that replaces it. */
+#main { min-height: 100vh; }
+.broadcast-wrap.is-pending { min-height: 260px; }
+
+@media (max-width: 720px) {
+  .broadcast-wrap.is-pending { min-height: 320px; }
+  /* Long column headings wrap on a phone rather than pushing a column off. */
+  table.sheet thead th { white-space: normal; vertical-align: bottom; }
+}
+
+/* The narrowest phones: a little less padding per cell keeps seven-column
+   roster tables inside the screen, so nothing hides in a scroll box that a
+   keyboard user could not reach. */
+@media (max-width: 400px) {
+  table.roster th, table.roster td { padding-left: 5px; padding-right: 5px; }
+}
+
+/* The player cell is each roster row's header (for screen readers) but keeps
+   the look of a data cell, and still shows its row's tint. */
+table.roster tbody th.player {
+  font-stretch: 100%; font-weight: 400; font-size: 14px; color: var(--ink);
+  white-space: normal; background: transparent; vertical-align: middle;
+  padding-top: 9px; padding-bottom: 9px; border-bottom: 1px solid var(--rule);
+}
+table.roster tbody tr:last-child th.player { border-bottom: 0; }
+table.roster tbody tr.mine th.player { background: var(--paper-2); }
+
+/* Focus lands on a new view's container when you navigate; it is not a
+   control, so it shows no ring. Scrolling to a focused control leaves room
+   for the sticky section tabs, so they never cover it (WCAG 2.4.11). */
+section.panel:focus { outline: none; }
+/* The sticky cluster is now masthead + score bug + tabs, not tabs alone;
+   generous on purpose so a focused heading never lands under any of it. */
+html { scroll-padding-top: 210px; }
+@media (max-width: 720px) { html { scroll-padding-top: 230px; } }
+
+/* A row's action as a real button that still reads as the player's name. */
+.row-action {
+  appearance: none; background: none; border: 0; padding: 0; margin: 0;
+  font: inherit; color: inherit; text-align: inherit; cursor: pointer;
+}
+.row-action:hover .pname { text-decoration: underline; text-underline-offset: 3px; }
+.row-action:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* Row headers may carry a phone-only summary line; let them wrap rather than
+   push their table wider than the screen. */
+table.sheet tbody th { white-space: normal; }
