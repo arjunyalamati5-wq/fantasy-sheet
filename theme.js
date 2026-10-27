@@ -1,13 +1,13 @@
-// Theme: the light "studio" sheet is the app's own default, whatever the OS
-// says; dark (prime time) is one click away and, once chosen, sticks.
+// Theme: the dark olive "lime" sheet is the app's own default, whatever the OS
+// says; light (paper) is one click away and, once chosen, sticks.
 
 const KEY = 'ff.theme';
 
 export function currentTheme() {
   try {
-    if (localStorage.getItem(KEY) === 'dark') return 'dark';
+    if (localStorage.getItem(KEY) === 'light') return 'light';
   } catch { /* private browsing */ }
-  return 'light';
+  return 'dark';
 }
 
 /** What the page is actually showing right now. */
@@ -17,11 +17,10 @@ export function resolvedTheme() {
 
 export function setTheme(theme) {
   try {
-    if (theme === 'dark') localStorage.setItem(KEY, 'dark');
+    if (theme === 'light') localStorage.setItem(KEY, 'light');
     else localStorage.removeItem(KEY);
   } catch { /* ignore */ }
-  if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-  else document.documentElement.removeAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', theme === 'light' ? 'light' : 'dark');
 }
 
 export function nextTheme() {

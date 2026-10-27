@@ -4,7 +4,7 @@
 // request, marked so the page can say it is showing saved data.
 // Nothing here ever sends data anywhere; it only keeps copies of answers.
 
-const SHELL = 'ff-shell-v4';
+const SHELL = 'ff-shell-v5';
 // The folder the app lives in: '/' locally, '/<repo>/' on GitHub Pages.
 const BASE = new URL('./', self.registration.scope).pathname;
 const DATA = 'ff-data-v1';

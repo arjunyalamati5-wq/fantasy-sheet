@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fantasy Sheet</title>
 <meta name="description" content="Analysis for your Sleeper fantasy football league, scored in your league's own settings.">
-<meta name="theme-color" content="#f4f1eb">
+<meta name="theme-color" content="#282c20">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -27,13 +27,16 @@
 <link rel="stylesheet" href="oppscout.css">
 <link rel="stylesheet" href="alerts.css">
 <link rel="stylesheet" href="editorial.css">
+<link rel="stylesheet" href="lando.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231F1D19'/><path d='M8 4v24M16 4v24M24 4v24' stroke='%23DCD5C6' stroke-opacity='.6' stroke-width='1.5'/><rect x='4' y='12' width='24' height='8' rx='2' fill='%23C4922A'/></svg>">
 <script>
-  // Apply a saved dark choice before first paint so the page never flashes
-  // the light sheet first. Light is the default; nothing to do otherwise.
+  // Apply the theme before first paint so the page never flashes the wrong
+  // sheet. Dark (olive and lime) is the default; a saved light choice wins.
   try {
-    if (localStorage.getItem('ff.theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-  } catch (e) {}
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('ff.theme') === 'light' ? 'light' : 'dark');
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
 </script>
 </head>
 <body>

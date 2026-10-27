@@ -101,7 +101,9 @@ export async function cacheSet(key, value) {
   if (!IS_NODE) return browserSet(key, value);
   await ensureDir();
   const file = keyToFile(key);
-  const tmp = `${file}.${process.pid}.tmp`;
+  // A unique name per write: two refreshes of the same key in one process
+  // would otherwise share a temp file and one rename would fail.
+  const tmp = `${file}.${process.pid}.${Math.random().toString(36).slice(2)}.tmp`;
   await fs.writeFile(tmp, JSON.stringify({ at: Date.now(), value }));
   await fs.rename(tmp, file); // atomic, so a crash can't leave a torn cache file
 }

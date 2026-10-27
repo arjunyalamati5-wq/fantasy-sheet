@@ -1,8 +1,8 @@
 {
  "schema": 1,
- "generatedAt": "2026-10-18T03:38:29.378Z",
+ "generatedAt": "2026-10-26T19:14:36.049Z",
  "season": 2026,
- "throughWeek": 6,
+ "throughWeek": 7,
  "participationSeason": 2025,
  "participationIsCurrent": false,
  "sources": [
@@ -38,9 +38,9 @@
   }
  ],
  "files": {
-  "weekly_2026.json": 306363,
-  "season_2026.json": 123005,
-  "teams_2026.json": 13348,
+  "weekly_2026.json": 404035,
+  "season_2026.json": 131978,
+  "teams_2026.json": 17468,
   "coverage_2025.json": 49834,
   "unmatched.json": 874
  },
@@ -94,17 +94,17 @@
    0.003
   ]
  },
- "matched": 2043,
+ "matched": 2045,
  "matchMethods": {
   "gsis": 754,
-  "crosswalk": 1006,
+  "crosswalk": 1005,
   "espn": 69,
   "name_team_pos": 55,
-  "name_pos": 159
+  "name_pos": 162
  },
  "idConflicts": 56,
  "unmatchedCount": 6,
- "ftnJoinRate": 1,
- "buildMs": 31843,
+ "ftnJoinRate": 0.889,
+ "buildMs": 13140,
  "attribution": "Play-by-play and snap data: nflverse. Charting data: FTN Data via nflverse. Participation: NFL Next Gen Stats via nflverse."
 }
